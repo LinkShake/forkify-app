@@ -100,6 +100,8 @@ To reinstall parcel run
 npm i parcel --save-dev
 ```
 
+If you reinstall parcel it's important, to avoid conflicts, that you delete the `dist` and `.parcel-cache` that parcel automatically created when you ran `"npm run"`.
+
 If this doesn't solve your problem, then go checking [parcel docs](https://parceljs.org/docs/) or see if someone else had a similar problem on [stackoverflow](https://stackoverflow.com/).
 
 ## Use the live site
