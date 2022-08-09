@@ -8,10 +8,10 @@
 > - [Setup](https://github.com/LinkShake/forkify-app#setup):
 >   - [Download the code and install all the dependencies](https://github.com/LinkShake/forkify-app#download-the-code-and-install-all-the-dependencies)
 > - [Run the project](https://github.com/LinkShake/forkify-app#run-the-project):
->   - Run via CLI and npm
->   - Use the live site
->   - Build the project (optional)
-> - Still to implement/potential new features
+>   - [Run via CLI and npm](https://github.com/LinkShake/forkify-app#run-via-cli-and-npm)
+>   - [Use the live site](https://github.com/LinkShake/forkify-app#use-the-live-site)
+>   - [Build the project (optional)](https://github.com/LinkShake/forkify-app#built-the-project)
+> - [Still to implement/potential new features](https://github.com/LinkShake/forkify-app#still-to-implementpotential-new-features)
 
 ## About
 
@@ -23,7 +23,7 @@ I tried my best to make the app suitable for both desktop and mobile devices and
 
 ## Setup
 
-**Important:** To download the dependencies and run the project you need `[Node.js](https://nodejs.org/it/)` and `[npm](https://www.npmjs.com/)` installed on your machine
+**Important:** To download the dependencies and run the project you need [`Node.js`](https://nodejs.org/it/) and [`npm`](https://www.npmjs.com/) installed on your machine
 
 ### Download the code and install all the dependencies
 
@@ -56,7 +56,7 @@ in your command line and press enter.
 
 ### Potential issues
 
-If some problems occure during this phase, then check if your `[package.json](/package.json)` file has this structure:
+If some problems occure during this phase, then check if your [`package.json`](/package.json) file has this structure:
 
 ```
 {
@@ -85,13 +85,13 @@ If some problems occure during this phase, then check if your `[package.json](/p
 If you have different versions of the dependencies, then uninstall them using
 
 ```
-npm uninstall `dependency name`
+npm uninstall dependency name
 ```
 
 and then reinstall them using
 
 ```
-npm i `dependecy name`
+npm i dependecy name
 ```
 
 To reinstall parcel run
@@ -116,7 +116,7 @@ To build the project run
 npm run build
 ```
 
-As always, if some problems occure check your `[package.json](/package.json)`, in particoular your `"build"` script should be like this
+As always, if some problems occure check your [`package.json`](/package.json), in particoular your `"build"` script should be like this
 
 ```
 "build": "parcel build index.html --dist-dir ./dist"
@@ -130,7 +130,7 @@ and you should have this property
 
 before the `"script"` tag.
 
-If this doesn't solve your problem check here.
+If this doesn't solve your problem check [here](https://github.com/LinkShake/forkify-app#potential-issues).
 
 ## Still to implement/potential new features
 
@@ -142,6 +142,6 @@ The button is working but I have to store the data and display in the UI.
 ### Potential new features
 
 This is a prospective and, because of that, I don't know if I'll implement the following feature/s.
-For the time being the only feature I'm interested to implement is the possibility of displaying the calories of each recipe using the [spoonacular API](https://spoonacular.com/food-api).
+For the time being the only feature I'm interested to implement is the possibility of displaying the calories of each recipe using the [`spoonacular API`](https://spoonacular.com/food-api).
 
 But, repeating myself, I'm not sure of the implementation of the features written above.
