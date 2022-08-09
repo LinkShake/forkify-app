@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  gap: 5rem;
+  transform: translateX(-1rem);
+}
+
+.current-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border: 3.5px solid #f48982;
+  border-radius: 50%;
+  background-color: #f2efee;
+}
+
+.current-page span {
+  font-size: 2rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #f48982;
+}
