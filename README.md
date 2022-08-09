@@ -52,7 +52,7 @@ To run this project using the command line and npm you have to write
 npm start
 ```
 
-in your command line and press enter.
+in your command line and press enter: this will launch the app at `http://localhost:1234`.
 
 ### Potential issues
 
