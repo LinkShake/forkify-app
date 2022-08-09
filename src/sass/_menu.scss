@@ -1,6 +1,6 @@
 .mobile-nav {
   position: absolute;
-  top: 100;
+  top: 0;
   right: 0;
   background-color: white;
   width: 100%;
@@ -17,14 +17,28 @@
 }
 
 .mobile-nav ul {
+  margin-top: 10rem;
   padding-top: 3rem;
   padding-bottom: 3rem;
-  width: 100%;
+  // width: 100%;
 }
 
 .mobile-nav li {
   padding: 2vh;
   text-align: center;
+  width: 100%;
+  &:hover {
+    background-color: #f2efee;
+  }
+}
+
+.btn--close-menu {
+  position: absolute;
+  top: 30;
+  right: 40;
+  background-color: transparent;
+  border: transparent;
+  font-size: 5rem;
 }
 
 .active {

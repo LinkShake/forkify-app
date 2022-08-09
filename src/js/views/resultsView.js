@@ -34,12 +34,14 @@ class ResultsView extends View {
   }
 
   addHandlerClickMobileBookmarks(handlerFunction) {
-    this._bookmarksMobile.addEventListener("click", () => {
+    this._bookmarksMobile.parentElement.addEventListener("click", () => {
       this._mobileNav.classList.add("hidden");
-      // this._recipeView.classList.add("hidden");
       this._recipeView.classList.remove("full-width");
       this._searchResultsEl.classList.remove("hidden");
       this._paginationEl.innerHTML = "";
+      if (parseInt(window.innerWidth) <= 820) {
+        this._recipeView.classList.add("hidden");
+      }
       handlerFunction();
     });
   }

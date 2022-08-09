@@ -10,7 +10,11 @@ class CalendarView extends View {
 
   constructor() {
     super();
-    this.addHandlerClickCloseButton(this._buttonClose, this._calendarWrapper);
+    this.addHandlerClickCloseButton(
+      this._buttonClose,
+      this._calendarWrapper,
+      true
+    );
   }
 
   addHandlerDisplayCalendar(handlerFunction) {
@@ -18,9 +22,9 @@ class CalendarView extends View {
       this._calendarWrapper.classList.toggle("hidden");
       handlerFunction();
     });
-    this._calendarButtonMobile.addEventListener("click", () => {
+    this._calendarButtonMobile.parentElement.addEventListener("click", () => {
       document.querySelector(".mobile-nav").classList.add("hidden");
-      this._calendarWrapper.classList.toggle("hidden");
+      this._calendarWrapper.classList.remove("hidden");
     });
   }
 

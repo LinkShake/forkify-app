@@ -157,9 +157,6 @@ const updatePagination = (
   }
   paginationView.render(model.state.search);
 };
-const newFeature = () => {
-  console.log("You've added a new feature!");
-};
 const init = () => {
   recipeView.addHandlerRender(controlRecipes);
   searchView.addHandlerSearch(controlSearchResults);
@@ -182,6 +179,5 @@ const init = () => {
   marketView.addHandlerChangeQuantity(controlChangeQuantity);
   calendarView.addHandlerDisplayCalendar(controlCalendar);
   resultsView.addHandlerClickMobileBookmarks(controlBookmarksMobile);
-  newFeature();
 };
 init();

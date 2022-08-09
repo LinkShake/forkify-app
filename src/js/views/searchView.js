@@ -16,9 +16,11 @@ class SearchView {
   addHandlerSearch(handlerFunction) {
     this._parentElement.addEventListener("submit", (e) => {
       e.preventDefault();
-      // this._recipeView.classList.add("hidden");
       this._recipeView.classList.remove("full-width");
       this._results.classList.remove("hidden");
+      if (parseInt(window.innerWidth) <= 820) {
+        this._recipeView.classList.add("hidden");
+      }
       handlerFunction();
     });
   }

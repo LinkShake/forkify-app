@@ -5,9 +5,12 @@ export default class View {
   _data;
   _errorMessage =
     "We are not aible to find that recipe. We're so sorry for the inconvenience. Try again, maybe check if the spelling of the recipe name is right!";
+  _searchResultsEl = document.querySelector(".search-results");
 
   constructor() {
     this.addHandlerResize();
+    this.handleWidth();
+    this.addHandlerLoad();
   }
 
   render(data, render = true, type = "generic", errorMsg = this._errorMessage) {
@@ -93,19 +96,59 @@ export default class View {
 
   addHandlerResize() {
     window.addEventListener("resize", () => {
+      // console.log(document.querySelector(".results").children);
       document.querySelector(".bookmarks").classList.add("hidden");
+      if (
+        parseInt(window.innerWidth) <= 820 &&
+        document.querySelector(".results").children.length === 0
+      ) {
+        this._searchResultsEl.classList?.add("hidden");
+        this._parentElement.classList?.add("full-width");
+      }
+
+      if (parseInt(window.innerWidth) > 820) {
+        this._searchResultsEl.classList?.remove("hidden");
+        this._parentElement.classList?.remove("full-width");
+      }
     });
   }
 
-  addHandlerClickCloseButton(button, elementToHide) {
+  addHandlerClickCloseButton(button, elementToHide, calendarButton = false) {
     button.addEventListener("click", () => {
       elementToHide.classList.add("hidden");
       document.querySelector(".recipe").classList.remove("hidden");
-      document.querySelector(".recipe").classList.add("full-width");
+      if (calendarButton) {
+        if (parseInt(window.innerWidth) <= 820)
+          document.querySelector(".recipe").classList.add("full-width");
+      } else document.querySelector(".recipe").classList.add("full-width");
     });
   }
 
   removeRecipeFullWidth() {
     document.querySelector(".recipe").classList.remove("full-width");
+  }
+
+  handleWidth() {
+    window.addEventListener("resize", this.manageWidthFunction.bind(this));
+  }
+
+  manageWidthFunction() {
+    if (
+      !document.querySelector(".search-results").classList.contains("hidden") &&
+      parseInt(window.innerWidth) <= 820
+    ) {
+      document.querySelector(".recipe").classList.add("hidden");
+    } else if (parseInt(window.innerWidth) > 820) {
+      document.querySelector(".recipe").classList.remove("hidden");
+    }
+  }
+
+  addHandlerLoad() {
+    window.addEventListener("load", () => {
+      if (parseInt(window.innerWidth) <= 820) {
+        document.querySelector(".search-results").classList.add("hidden");
+        document.querySelector(".recipe").classList.add("full-width");
+      }
+    });
   }
 }

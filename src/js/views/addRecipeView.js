@@ -24,7 +24,7 @@ class AddRecipeView extends View {
   }
 
   _addHandlerOpenForm() {
-    [this._btnOpenForm, this._btnOpenFormMobile].forEach((el) =>
+    [this._btnOpenForm, this._btnOpenFormMobile.parentElement].forEach((el) =>
       el.addEventListener(
         "click",
         function () {

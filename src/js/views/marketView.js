@@ -16,15 +16,17 @@ class MarketView extends View {
   addHandlerMarket(handlerFunction) {
     [
       document.querySelector(".nav__btn--market"),
-      document.querySelector(".nav__btn--market-mobile"),
+      document.querySelector(".nav__btn--market-mobile").parentElement,
     ].forEach((el) =>
       el.addEventListener(
         "click",
         function () {
-          // this._recipeView.classList.add("hidden");
           this._recipeView.classList.remove("full-width");
           this._searchResultsEl.classList.remove("hidden");
           document.querySelector(".mobile-nav").classList.add("hidden");
+          if (parseInt(window.innerWidth) <= 820) {
+            this._recipeView.classList.add("hidden");
+          }
           handlerFunction();
         }.bind(this)
       )
