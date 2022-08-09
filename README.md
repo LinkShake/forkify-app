@@ -4,8 +4,8 @@
 
 > -About the project
 > -Setup:
-> | > -Download the code and install all the dependecies
+> | -Download the code and install all the dependecies
 > -Run the project:
-> | > -Run via CLI and npm
-> | > -Use the live site
+> | -Run via CLI and npm
+> | -Use the live site
 > -Still to implement/potential new features
