@@ -23,7 +23,7 @@ I tried my best to make the app suitable for both desktop and mobile devices and
 
 ## Setup
 
-**Important:** To download the dependencies and run the project you need <span style="background-color: #f2efee;">[Node.js](https://nodejs.org/it/)</span> and <span style="background-color: #f2efee;">[npm](https://www.npmjs.com/</span> installed on your machine
+**Important:** To download the dependencies and run the project you need `[Node.js](https://nodejs.org/it/)` and `[npm](https://www.npmjs.com/)` installed on your machine
 
 ### Download the code and install all the dependencies
 
@@ -56,7 +56,7 @@ in your command line and press enter.
 
 ### Potential issues
 
-If some problems occure during this phase, then check if your <span style="background-color: #f2efee;">[package.json](/package.json)</span> file has this structure:
+If some problems occure during this phase, then check if your `[package.json](/package.json)` file has this structure:
 
 ```
 {
@@ -85,13 +85,13 @@ If some problems occure during this phase, then check if your <span style="backg
 If you have different versions of the dependencies, then uninstall them using
 
 ```
-npm uninstall **dependency name**
+npm uninstall `dependency name`
 ```
 
 and then reinstall them using
 
 ```
-npm i **dependecy name**
+npm i `dependecy name`
 ```
 
 To reinstall parcel run
@@ -116,7 +116,7 @@ To build the project run
 npm run build
 ```
 
-As always, if some problems occure check your <span style="background-color: #f2efee;">[package.json](/package.json)</span>, in particoular your <span style="background-color: #f2efee;">"build"</span> script should be like this
+As always, if some problems occure check your `[package.json](/package.json)`, in particoular your `"build"` script should be like this
 
 ```
 "build": "parcel build index.html --dist-dir ./dist"
@@ -128,7 +128,7 @@ and you should have this property
 "default": "index.html"
 ```
 
-before the <span style="background-color: #f2efee;">"script"</span> tag.
+before the `"script"` tag.
 
 If this doesn't solve your problem check here.
 
