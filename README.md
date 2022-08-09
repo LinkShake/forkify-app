@@ -11,3 +11,5 @@
 >   - Run via CLI and npm
 >   - Use the live site
 > - Still to implement/potential new features
+
+> npm i
