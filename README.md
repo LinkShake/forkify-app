@@ -4,7 +4,7 @@
 
 [//]: <> (prettier ignore)
 
-> - [About](/LinkShake/forkify-app#About)
+> - [About](/LinkShake/forkify-app#about)
 > - Setup:
 >   - Download the code and install all the dependecies
 > - Run the project:
