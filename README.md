@@ -1,3 +1,11 @@
 # Forkify Project
 
-A web app built with js, scss and html to search for recipes and load your own ones.
+### index
+
+-About the project
+-Setup:
+-Download the code and install all the dependecies
+-Run the project:
+-Run via CLI and npm
+-Use the live site
+-Still to implement/potential new features
