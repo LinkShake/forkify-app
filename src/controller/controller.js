@@ -8,7 +8,6 @@ import paginationView from "./views/paginationView";
 import bookmarksView from "./views/bookmarksView";
 import addRecipeView from "./views/addRecipeView";
 import marketView from "./views/marketView";
-import notificationsView from "./views/notificationsView";
 import calendarView from "./views/calendarView";
 import menuView from "./views/menuView";
 import { TIMEOUT_FORM_CLOSE_SECONDS } from "../shared/config";
@@ -119,19 +118,8 @@ const controlChangeQuantity = (quantity, description, id) => {
 };
 const controlSaveDate = (date) => {
   model.storeDate(date);
-  model.increaseNotificationsCounter();
-  model.storeNotificationsCounter();
 };
-const controlLoadNotifications = () => {
-  model.loadNotificationsCounter();
-};
-const controlNotifications = () => {
-  notificationsView.render(
-    model.state.notificationsCounter,
-    true,
-    "notifications"
-  );
-};
+
 const controlCalendar = () => {
   calendarView.render(model.state.dates);
 };
@@ -169,10 +157,7 @@ const init = () => {
   marketView.addHandlerMarket(controlMarket);
   marketView.addHandlerLoadMarket(model.loadMarketIngredients);
   recipeView.addHandlerSaveDate(controlSaveDate);
-  notificationsView.addHandlerLoadNotificationsCounter(
-    controlLoadNotifications
-  );
-  notificationsView.addHandlerRenderNotifications(controlNotifications);
+
   marketView.addHandlerRemoveIngredientFromMarket(
     controlRemoveIngredientFromMarket
   );

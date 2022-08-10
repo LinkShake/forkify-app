@@ -213,21 +213,3 @@ export const loadDate = () => {
   }
   console.log(state.dates);
 };
-
-export const increaseNotificationsCounter = () => {
-  state.notificationsCounter++;
-};
-
-export const storeNotificationsCounter = () => {
-  localStorage.setItem(
-    "notifications",
-    JSON.stringify(state.notificationsCounter)
-  );
-};
-
-export const loadNotificationsCounter = () => {
-  const storage = localStorage.getItem("notifications");
-  if (storage) {
-    state.notificationsCounter = parseInt(JSON.parse(storage));
-  }
-};
