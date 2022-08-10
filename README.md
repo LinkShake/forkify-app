@@ -19,9 +19,11 @@
 
 ### The project
 
-Forkify is a web app realized using js, scss and HTML. The goal is to let users search for their favourite recipes, bookmark them, market ingredients, plan some cooking and add their own recipes.
+Forkify is a web app realized using vanilla js. The goal is to let users search for their favourite recipes, bookmark them, market ingredients, plan some cooking and add their own recipes.
 
 I tried my best to make the app suitable for both desktop and mobile devices and smaller screens!
+At the time I'm writing these there is a strange bug that occures in all iPhones (I couldn't test also on iPads or macs): for some reason the "add recipe UI" is bugged.
+I'm saying this 'cause both the Chrome and Firexfox iPhone emulation showed zero problems: I don't know if this could be Safari's fault.
 
 ## Setup
 
