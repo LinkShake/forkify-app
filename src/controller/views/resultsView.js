@@ -1,5 +1,6 @@
 import View from "./shared/View";
 import PreviewView from "./shared/previewView";
+import { WIDTH_TRANSITION_UI } from "../../shared/config";
 import { _ } from "core-js";
 
 class ResultsView extends View {
@@ -25,7 +26,7 @@ class ResultsView extends View {
 
   addHandlerClickRecipePreview() {
     this._parentElement.addEventListener("click", (e) => {
-      if (parseInt(window.innerWidth) > 820) return;
+      if (parseInt(window.innerWidth) > WIDTH_TRANSITION_UI) return;
       const clickedRecipe = e.target.closest(".preview");
       if (!clickedRecipe) return;
       this._searchResultsEl.classList.add("hidden");
@@ -39,7 +40,7 @@ class ResultsView extends View {
       this._recipeView.classList.remove("full-width");
       this._searchResultsEl.classList.remove("hidden");
       this._paginationEl.innerHTML = "";
-      if (parseInt(window.innerWidth) <= 820) {
+      if (parseInt(window.innerWidth) <= WIDTH_TRANSITION_UI) {
         this._recipeView.classList.add("hidden");
       }
       handlerFunction();

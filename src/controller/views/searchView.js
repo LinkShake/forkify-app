@@ -1,3 +1,5 @@
+import { WIDTH_TRANSITION_UI } from "../../shared/config";
+
 class SearchView {
   _parentElement = document.querySelector(".search");
   _recipeView = document.querySelector(".recipe");
@@ -18,7 +20,7 @@ class SearchView {
       e.preventDefault();
       this._recipeView.classList.remove("full-width");
       this._results.classList.remove("hidden");
-      if (parseInt(window.innerWidth) <= 820) {
+      if (parseInt(window.innerWidth) <= WIDTH_TRANSITION_UI) {
         this._recipeView.classList.add("hidden");
       }
       handlerFunction();

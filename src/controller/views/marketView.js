@@ -1,4 +1,5 @@
 import View from "./shared/View";
+import { WIDTH_TRANSITION_UI } from "../../shared/config";
 
 class MarketView extends View {
   _parentElement = document.querySelector(".results");
@@ -24,7 +25,7 @@ class MarketView extends View {
           this._recipeView.classList.remove("full-width");
           this._searchResultsEl.classList.remove("hidden");
           document.querySelector(".mobile-nav").classList.add("hidden");
-          if (parseInt(window.innerWidth) <= 820) {
+          if (parseInt(window.innerWidth) <= WIDTH_TRANSITION_UI) {
             this._recipeView.classList.add("hidden");
           }
           handlerFunction();
@@ -63,7 +64,6 @@ class MarketView extends View {
       const description = btn.dataset.description;
       const id = btn.id;
       handlerFunction(description, id);
-      // this._recipeView.classList.add("hidden");
     });
   }
 

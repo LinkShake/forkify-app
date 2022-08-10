@@ -1,5 +1,5 @@
 import icons from "url:../../../img/icons.svg";
-
+import { WIDTH_TRANSITION_UI } from "../../../shared/config";
 export default class View {
   _parentElement = document.querySelector(".recipe");
   _data;
@@ -99,14 +99,14 @@ export default class View {
       // console.log(document.querySelector(".results").children);
       document.querySelector(".bookmarks").classList.add("hidden");
       if (
-        parseInt(window.innerWidth) <= 820 &&
+        parseInt(window.innerWidth) <= WIDTH_TRANSITION_UI &&
         document.querySelector(".results").children.length === 0
       ) {
         this._searchResultsEl.classList?.add("hidden");
         this._parentElement.classList?.add("full-width");
       }
 
-      if (parseInt(window.innerWidth) > 820) {
+      if (parseInt(window.innerWidth) > WIDTH_TRANSITION_UI) {
         this._searchResultsEl.classList?.remove("hidden");
         this._parentElement.classList?.remove("full-width");
       }
@@ -118,7 +118,7 @@ export default class View {
       elementToHide.classList.add("hidden");
       document.querySelector(".recipe").classList.remove("hidden");
       if (calendarButton) {
-        if (parseInt(window.innerWidth) <= 820)
+        if (parseInt(window.innerWidth) <= WIDTH_TRANSITION_UI)
           document.querySelector(".recipe").classList.add("full-width");
       } else document.querySelector(".recipe").classList.add("full-width");
     });
@@ -135,17 +135,17 @@ export default class View {
   manageWidthFunction() {
     if (
       !document.querySelector(".search-results").classList.contains("hidden") &&
-      parseInt(window.innerWidth) <= 820
+      parseInt(window.innerWidth) <= WIDTH_TRANSITION_UI
     ) {
       document.querySelector(".recipe").classList.add("hidden");
-    } else if (parseInt(window.innerWidth) > 820) {
+    } else if (parseInt(window.innerWidth) > WIDTH_TRANSITION_UI) {
       document.querySelector(".recipe").classList.remove("hidden");
     }
   }
 
   addHandlerLoad() {
     window.addEventListener("load", () => {
-      if (parseInt(window.innerWidth) <= 820) {
+      if (parseInt(window.innerWidth) <= WIDTH_TRANSITION_UI) {
         document.querySelector(".search-results").classList.add("hidden");
         document.querySelector(".recipe").classList.add("full-width");
       }
