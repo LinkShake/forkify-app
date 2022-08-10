@@ -110,7 +110,7 @@ If this doesn't solve your problem, then go checking [parcel docs](https://parce
 
 ## Use the live site
 
-If you prefer not to do everything I mentioned before, you can simply visit the site at:
+If you prefer not to do everything I mentioned before, you can simply visit the site at: [`forkify-app-linkshake`](https://forkify-app-linkshake.netlify.app/)
 
 ## Build the project
 
