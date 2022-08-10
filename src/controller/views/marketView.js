@@ -1,4 +1,4 @@
-import View from "./View.js";
+import View from "./shared/View";
 
 class MarketView extends View {
   _parentElement = document.querySelector(".results");

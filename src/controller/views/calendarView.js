@@ -1,4 +1,4 @@
-import View from "./View.js";
+import View from "./shared/View";
 
 class CalendarView extends View {
   _parentElement = document.querySelector(".calendar-table");

@@ -1,17 +1,17 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
-import * as model from "./model.js";
-import recipeView from "./views/recipeView.js";
-import searchView from "./views/searchView.js";
-import resultsView from "./views/resultsView.js";
-import paginationView from "./views/paginationView.js";
-import bookmarksView from "./views/bookmarksView.js";
-import addRecipeView from "./views/addRecipeView.js";
-import marketView from "./views/marketView.js";
-import notificationsView from "./views/notificationsView.js";
-import calendarView from "./views/calendarView.js";
-import menuView from "./views/menuView.js";
-import { TIMEOUT_FORM_CLOSE_SECONDS } from "./config.js";
+import * as model from "./model/model.js";
+import recipeView from "./views/recipeView";
+import searchView from "./views/searchView";
+import resultsView from "./views/resultsView";
+import paginationView from "./views/paginationView";
+import bookmarksView from "./views/bookmarksView";
+import addRecipeView from "./views/addRecipeView";
+import marketView from "./views/marketView";
+import notificationsView from "./views/notificationsView";
+import calendarView from "./views/calendarView";
+import menuView from "./views/menuView";
+import { TIMEOUT_FORM_CLOSE_SECONDS } from "../shared/config";
 if (module.hot) {
   module.hot.accept();
 }

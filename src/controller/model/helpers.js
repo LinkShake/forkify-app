@@ -1,4 +1,4 @@
-import { TIMEOUT_REQUEST_SECONDS } from "./config.js";
+import { TIMEOUT_REQUEST_SECONDS } from "../../shared/config.js";
 
 const timeout = (seconds) => {
   return new Promise((_, reject) => {

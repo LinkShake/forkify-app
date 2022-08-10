@@ -1,5 +1,5 @@
-import View from "./View.js";
-import PreviewView from "./previewView.js";
+import View from "./shared/View";
+import PreviewView from "./shared/previewView";
 import { _ } from "core-js";
 
 class ResultsView extends View {

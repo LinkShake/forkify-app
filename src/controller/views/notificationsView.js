@@ -1,4 +1,4 @@
-import View from "./View.js";
+import View from "./shared/View";
 
 class NotificationsView extends View {
   _parentElement = document.querySelector(".notifications");

@@ -11,7 +11,9 @@
 >   - [Run via CLI and npm](https://github.com/LinkShake/forkify-app#run-via-cli-and-npm)
 >   - [Use the live site](https://github.com/LinkShake/forkify-app#use-the-live-site)
 >   - [Build the project (optional)](https://github.com/LinkShake/forkify-app#built-the-project)
-> - [Still to implement/potential new features](https://github.com/LinkShake/forkify-app#still-to-implementpotential-new-features)
+> - [Future of the project](https://github.com/LinkShake/forkify-app#future-of-the-project):
+>   - [What misses in the project](https://github.com/LinkShake/forkify-app#what-misses-in-the-project)
+>   - [Potential new features](https://github.com/LinkShake/forkify-app#potential-new-features)
 
 ## About
 
@@ -134,7 +136,7 @@ before the `"script"` tag.
 
 If this doesn't solve your problem check [here](https://github.com/LinkShake/forkify-app#potential-issues).
 
-## Still to implement/potential new features
+## Future of the project
 
 ### What misses in the project
 
