@@ -33,7 +33,9 @@ class CalendarView extends View {
   _generateMarkup() {
     return this._data
       .map(({ _, date, recipe }) => {
-        return `<div class="box-date"><strong>${date}:</strong> ${recipe}</div>`;
+        if (date) {
+          return `<div class="box-date"><strong>${date}:</strong> ${recipe}</div>`;
+        } else return;
       })
       .join("");
   }
