@@ -136,12 +136,7 @@ const updatePagination = (
   goToPage = model.state.search.currentPage
 ) => {
   if (errorMsg) {
-    resultsView.render(
-      model.getSearchResultsPage(goToPage),
-      true,
-      "generic",
-      errorMsg
-    );
+    resultsView.render(model.getSearchResultsPage(goToPage), true, errorMsg);
   } else {
     resultsView.render(model.getSearchResultsPage(goToPage));
   }

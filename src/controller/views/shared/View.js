@@ -13,7 +13,7 @@ export default class View {
     this.addHandlerLoad();
   }
 
-  render(data, render = true, type = "generic", errorMsg = this._errorMessage) {
+  render(data, render = true, errorMsg = this._errorMessage) {
     this._parentElement?.classList?.remove("hidden");
     if (!data || (Array.isArray(data) && !data.length)) {
       return this.renderError(errorMsg);
@@ -22,11 +22,11 @@ export default class View {
     if (!render) {
       return this._generateMarkup();
     }
-    if (!(type === "notifications")) {
-      this._clearParentElement();
-    }
-    const position = type === "notifications" ? "beforeend" : "afterbegin";
-    this._parentElement.insertAdjacentHTML(position, this._generateMarkup());
+    this._clearParentElement();
+    this._parentElement.insertAdjacentHTML(
+      "afterbegin",
+      this._generateMarkup()
+    );
   }
 
   update(data) {
@@ -96,7 +96,6 @@ export default class View {
 
   addHandlerResize() {
     window.addEventListener("resize", () => {
-      // console.log(document.querySelector(".results").children);
       document.querySelector(".bookmarks").classList.add("hidden");
       if (
         parseInt(window.innerWidth) <= WIDTH_TRANSITION_UI &&
