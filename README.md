@@ -5,6 +5,8 @@
 [//]: <> (prettier ignore)
 
 > - [About](https://github.com/LinkShake/forkify-app#about)
+>   - [The project](https://github.com/LinkShake/forkify-app#the-project)
+>   - [The architecture](https://github.com/LinkShake/forkify-app#the-architecture)
 > - [Setup](https://github.com/LinkShake/forkify-app#setup):
 >   - [Download the code and install all the dependencies](https://github.com/LinkShake/forkify-app#download-the-code-and-install-all-the-dependencies)
 > - [Run the project](https://github.com/LinkShake/forkify-app#run-the-project):
@@ -14,6 +16,7 @@
 > - [Future of the project](https://github.com/LinkShake/forkify-app#future-of-the-project):
 >   - [What misses in the project](https://github.com/LinkShake/forkify-app#what-misses-in-the-project)
 >   - [Potential new features](https://github.com/LinkShake/forkify-app#potential-new-features)
+> - [Important notes](https://github.com/LinkShake/forkify-app#important-notes)
 
 ## About
 
@@ -25,6 +28,14 @@ I tried my best to make the app suitable for both desktop and mobile devices and
 
 At the time I'm writing these there is a strange bug that occures in all iPhones (I couldn't test also on iPads or macs): for some reason the "add recipe UI" is bugged.
 I'm saying this 'cause both the Chrome and Firexfox's iPhone emulation showed zero problems: maybe there's some kind of conflicts/issues with iOS (not sure about that).
+
+### The architecture
+
+To build this project I used the [`MVC`](https://developer.mozilla.org/en-US/docs/Glossary/MVC) architecture that splits the code into:
+
+> - **Model**: handle the business logic and the state
+> - **Controller**: creates a bridge which connects the Model and the View
+> - **View**: handles the UI
 
 ## Setup
 
@@ -152,3 +163,7 @@ This is a prospective and, because of that, I don't know if I'll implement the f
 For the time being the only feature I'm interested to implement is the possibility of displaying the calories of each recipe using the [`spoonacular API`](https://spoonacular.com/food-api).
 
 But, repeating myself, I'm not sure of the implementation of the features written above.
+
+### Important notes
+
+For the time being the app is available only in english and you cannot translate it.
