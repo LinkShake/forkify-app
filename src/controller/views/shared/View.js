@@ -11,7 +11,6 @@ export default class View {
     this.addHandlerResize();
     this.handleWidth();
     this.addHandlerLoad();
-    this.addHandlerLanguage();
   }
 
   render(data, render = true, type = "generic", errorMsg = this._errorMessage) {
@@ -150,13 +149,6 @@ export default class View {
         document.querySelector(".search-results").classList.add("hidden");
         document.querySelector(".recipe").classList.add("full-width");
       }
-    });
-  }
-
-  addHandlerLanguage() {
-    window.addEventListener("load", () => {
-      let userLang = navigator.language || navigator.userLanguage;
-      window.setAttribute("lang", userLang);
     });
   }
 }
