@@ -174,6 +174,14 @@ class RecipeView extends View {
       }.bind(this)
     );
   }
+
+  addHandlerStoreInDatesArr(handlerFunction) {
+    this._parentElement.addEventListener("click", (e) => {
+      const btn = e.target.closest(".btn--calendar");
+      if (!btn) return;
+      handlerFunction();
+    });
+  }
 }
 
 export default new RecipeView();

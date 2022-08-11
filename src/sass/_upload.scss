@@ -35,6 +35,11 @@
     border: none;
     background: none;
   }
+
+  @media (max-width: 500px) and (orientation: landscape) {
+    max-width: 100vh;
+    max-height: 100vw;
+  }
 }
 
 .overlay {
@@ -162,5 +167,9 @@
 
   @media (max-width: 500px) {
     max-height: 20vh;
+  }
+
+  @media (max-height: 500px) and (orientation: landscape) {
+    max-height: 60vh;
   }
 }

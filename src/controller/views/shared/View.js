@@ -115,12 +115,29 @@ export default class View {
 
   addHandlerClickCloseButton(button, elementToHide, calendarButton = false) {
     button.addEventListener("click", () => {
+      const recipeEl = document.querySelector(".recipe");
+      const searchResultsEl = document.querySelector(".search-results");
       elementToHide.classList.add("hidden");
-      document.querySelector(".recipe").classList.remove("hidden");
-      if (calendarButton) {
-        if (parseInt(window.innerWidth) <= WIDTH_TRANSITION_UI)
-          document.querySelector(".recipe").classList.add("full-width");
-      } else document.querySelector(".recipe").classList.add("full-width");
+      recipeEl.classList.remove("overflow-hidden-class");
+      if (
+        calendarButton &&
+        parseInt(window.innerWidth) <= WIDTH_TRANSITION_UI &&
+        searchResultsEl.classList.contains("hidden")
+      ) {
+        recipeEl.classList.add("full-width");
+        recipeEl.classList.remove("hidden");
+      } else if (
+        calendarButton &&
+        parseInt(window.innerWidth) <= WIDTH_TRANSITION_UI &&
+        !searchResultsEl.classList.contains("hidden")
+      ) {
+        recipeEl.classList.remove("full-width");
+      } else if (!calendarButton) {
+        recipeEl.classList.remove("hidden");
+        recipeEl.classList.add("full-width");
+      } else {
+        recipeEl.classList.remove("hidden");
+      }
     });
   }
 

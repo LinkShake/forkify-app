@@ -119,7 +119,9 @@ const controlChangeQuantity = (quantity, description, id) => {
 const controlSaveDate = (date) => {
   model.storeDate(date);
 };
-
+const controlSaveInDatesArr = () => {
+  model.storeInDatesArr();
+};
 const controlCalendar = () => {
   calendarView.render(model.state.dates);
 };
@@ -157,6 +159,7 @@ const init = () => {
   marketView.addHandlerMarket(controlMarket);
   marketView.addHandlerLoadMarket(model.loadMarketIngredients);
   recipeView.addHandlerSaveDate(controlSaveDate);
+  recipeView.addHandlerStoreInDatesArr(controlSaveInDatesArr);
   marketView.addHandlerRemoveIngredientFromMarket(
     controlRemoveIngredientFromMarket
   );

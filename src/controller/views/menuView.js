@@ -10,6 +10,7 @@ class MenuView extends View {
     this.addHandlerClickMenuButton();
     this.addHandlerClickMenuCloseButton();
     this.hideMenuNav();
+    this.hideOtherViewsOnClick();
   }
 
   addHandlerClickMenuButton() {
@@ -17,12 +18,19 @@ class MenuView extends View {
       "click",
       function () {
         this._parentElement.classList.remove("hidden");
+        document
+          .querySelector(".recipe")
+          .classList.add("overflow-hidden-class");
       }.bind(this)
     );
   }
+
   addHandlerClickMenuCloseButton() {
     this._btnCloseMenu.addEventListener("click", () => {
       this._parentElement.classList.add("hidden");
+      document
+        .querySelector(".recipe")
+        .classList.remove("overflow-hidden-class");
     });
   }
 
@@ -34,6 +42,23 @@ class MenuView extends View {
           .getPropertyValue("display") === "none"
       ) {
         this._parentElement.classList.add("hidden");
+      }
+    });
+  }
+
+  hideOtherViewsOnClick() {
+    this._parentElement.addEventListener("click", (e) => {
+      const action = e.target.closest("li");
+      if (!action) return;
+      if (
+        action
+          .querySelector("button")
+          .classList.contains("nav__btn--calendar-mobile")
+      ) {
+        document.querySelector(".search-results").classList.add("hidden");
+        document.querySelector(".recipe").classList.add("full-width");
+      } else {
+        document.querySelector(".calendar-wrapper").classList.add("hidden");
       }
     });
   }

@@ -194,22 +194,40 @@ export const searchForIngredient = (quantity, description, id) => {
   });
 };
 
+const checkIfThereIsADateWithSameId = (dateID) => {
+  return state.dates.some(({ id }) => id === dateID);
+};
+
 export const storeDate = (date) => {
+  state.recipe.date = date;
   localStorage.setItem(`date-${state.recipe.id}`, JSON.stringify(date));
-  localStorage.removeItem("datesArray");
-  state.dates.push({ id: state.recipe.id, date, recipe: state.recipe.title });
+};
+
+export const storeInDatesArr = () => {
+  if (checkIfThereIsADateWithSameId(state.recipe.id)) {
+    state.dates = state.dates.filter(({ id }) => id !== state.recipe.id);
+    state.dates.push({
+      id: state.recipe.id,
+      date: state.recipe.date,
+      recipe: state.recipe.title,
+    });
+  } else {
+    state.dates.push({
+      id: state.recipe.id,
+      date: state.recipe.date,
+      recipe: state.recipe.title,
+    });
+  }
   localStorage.setItem("datesArray", JSON.stringify(state.dates));
 };
 
 export const loadDate = () => {
   const storage = localStorage.getItem(`date-${state.recipe.id}`);
   const storageArr = localStorage.getItem("datesArray");
-  state.dates = [];
   if (storage) {
     state.recipe.date = JSON.parse(storage);
   }
   if (storageArr) {
     state.dates = JSON.parse(storageArr);
   }
-  console.log(state.dates);
 };

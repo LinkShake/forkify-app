@@ -1,7 +1,7 @@
 import View from "./shared/View";
 
 class CalendarView extends View {
-  _parentElement = document.querySelector(".calendar-table");
+  _parentElement = document.querySelector(".dates");
   _calendarButton = document.querySelector(".nav__btn--calendar");
   _calendarButtonMobile = document.querySelector(".nav__btn--calendar-mobile");
   _calendarWrapper = document.querySelector(".calendar-wrapper");
@@ -24,16 +24,15 @@ class CalendarView extends View {
     });
     this._calendarButtonMobile.parentElement.addEventListener("click", () => {
       document.querySelector(".mobile-nav").classList.add("hidden");
+      document.querySelector(".recipe").classList.add("overflow-hidden-class");
       this._calendarWrapper.classList.remove("hidden");
+      handlerFunction();
     });
   }
 
   _generateMarkup() {
-    return this._data.map(({ id, date }) => {
-      return `<tr class="calendar-tr">
-                <td class="calendar-td">${id}</td>
-                 <td class="calendar-td">${date}</td>
-            </tr>`;
+    return this._data.map(({ _, date, recipe }) => {
+      return `<div class="box-date"><strong>${date}:</strong> ${recipe}</div>`;
     });
   }
 }
