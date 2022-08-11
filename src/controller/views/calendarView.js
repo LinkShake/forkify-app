@@ -35,7 +35,7 @@ class CalendarView extends View {
       .map(({ _, date, recipe }) => {
         if (date) {
           return `<div class="box-date"><strong>${date}:</strong> ${recipe}</div>`;
-        } else return;
+        } else this.renderError();
       })
       .join("");
   }
