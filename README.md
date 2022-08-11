@@ -154,8 +154,7 @@ If this doesn't solve your problem check [here](https://github.com/LinkShake/for
 
 ### What misses in the project
 
-I miss only one thing to complete properly in my project: the calendar for the recipes the user put a date for.
-The button is working but I have to store the data and display in the UI.
+Every feature is now implemented.
 
 ### Potential new features
 

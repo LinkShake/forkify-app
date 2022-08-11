@@ -35,10 +35,10 @@ class CalendarView extends View {
       .map(({ _, date, recipe }) => {
         if (date) {
           return `<div class="box-date"><strong>${date}:</strong> ${recipe}</div>`;
-        } else if (!date && this._data.length > 1) {
-          return;
-        } else {
+        } else if (!date && this._data.every(({ _, date }) => !date)) {
           this.renderError();
+        } else {
+          return;
         }
       })
       .join("");
