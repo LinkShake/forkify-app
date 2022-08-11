@@ -48,9 +48,10 @@
   height: 100%;
   transition: all 0.2s;
 
-  @media (max-width: 981px) {
+  @media (max-width: 980px) {
     transition: all 0.2s;
     top: 80;
+    height: 110vh;
   }
 }
 
