@@ -21,6 +21,7 @@ class AddRecipeView extends View {
     [this._window, this._overlay].forEach((el) =>
       el.classList.toggle("hidden")
     );
+    document.querySelector(".recipe").classList.remove("overflow-hidden-class");
   }
 
   _addHandlerOpenForm() {

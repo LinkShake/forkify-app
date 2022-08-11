@@ -37,8 +37,11 @@
   }
 
   @media (max-width: 500px) and (orientation: landscape) {
+    width: 150vh;
+    height: 50vw;
     max-width: 150vh;
     max-height: 50vw;
+    overflow: scroll;
   }
 }
 
