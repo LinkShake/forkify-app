@@ -231,3 +231,9 @@ export const loadDate = () => {
     state.dates = JSON.parse(storageArr);
   }
 };
+
+const deleteLocalStorage = () => {
+  localStorage.clear();
+};
+
+deleteLocalStorage();
