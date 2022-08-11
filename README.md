@@ -167,3 +167,5 @@ But, repeating myself, I'm not sure of the implementation of the features writte
 ### Important notes
 
 For the time being the app is available only in english and you cannot translate it.
+If you visit the app on mobile and you want to add a recipe, it's better doing it vertically and not horizontally.
+There's still iOS bug for add recipe feature (not for iPadOS).
