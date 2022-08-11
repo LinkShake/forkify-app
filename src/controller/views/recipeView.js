@@ -8,11 +8,6 @@ class RecipeView extends View {
   _errorMessage =
     "We are not aible to find that recipe. We're so sorry for the inconvenience. Try again, maybe check if the spelling of the recipe name is right!";
 
-  constructor() {
-    super();
-    this.addHandlerClickRecipeView();
-  }
-
   _generateMarkup() {
     const isInMarket =
       JSON.parse(localStorage.getItem(`disabled-${this._data.id}`)) &&
@@ -176,16 +171,6 @@ class RecipeView extends View {
         const date = form.querySelector("input");
         if (!date.value) return;
         handlerFunction(date.value);
-      }.bind(this)
-    );
-  }
-
-  addHandlerClickRecipeView() {
-    this._parentElement.addEventListener(
-      "click",
-      function () {
-        this._searchResultsEl.classList.add("hidden");
-        this._parentElement.classList.add("full-width");
       }.bind(this)
     );
   }

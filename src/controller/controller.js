@@ -157,7 +157,6 @@ const init = () => {
   marketView.addHandlerMarket(controlMarket);
   marketView.addHandlerLoadMarket(model.loadMarketIngredients);
   recipeView.addHandlerSaveDate(controlSaveDate);
-
   marketView.addHandlerRemoveIngredientFromMarket(
     controlRemoveIngredientFromMarket
   );
