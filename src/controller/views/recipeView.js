@@ -169,19 +169,18 @@ class RecipeView extends View {
         const form = e.target.closest("form");
         if (!form) return;
         const date = form.querySelector("input");
-        if (!date.value) return;
         handlerFunction(date.value);
       }.bind(this)
     );
   }
 
-  addHandlerStoreInDatesArr(handlerFunction) {
-    this._parentElement.addEventListener("click", (e) => {
-      const btn = e.target.closest(".btn--calendar");
-      if (!btn) return;
-      handlerFunction();
-    });
-  }
+  // addHandlerStoreInDatesArr(handlerFunction) {
+  //   this._parentElement.addEventListener("click", (e) => {
+  //     const btn = e.target.closest(".btn--calendar");
+  //     if (!btn) return;
+  //     handlerFunction();
+  //   });
+  // }
 }
 
 export default new RecipeView();

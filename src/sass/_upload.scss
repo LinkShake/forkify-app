@@ -37,8 +37,8 @@
   }
 
   @media (max-width: 500px) and (orientation: landscape) {
-    max-width: 100vh;
-    max-height: 100vw;
+    max-width: 150vh;
+    max-height: 50vw;
   }
 }
 
@@ -170,6 +170,6 @@
   }
 
   @media (max-height: 500px) and (orientation: landscape) {
-    max-height: 60vh;
+    max-height: 40vh;
   }
 }

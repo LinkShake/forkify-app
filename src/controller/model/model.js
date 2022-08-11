@@ -200,6 +200,7 @@ const checkIfThereIsADateWithSameId = (dateID) => {
 
 export const storeDate = (date) => {
   state.recipe.date = date;
+  console.log(date);
   localStorage.setItem(`date-${state.recipe.id}`, JSON.stringify(date));
 };
 
@@ -211,6 +212,13 @@ export const storeInDatesArr = () => {
       date: state.recipe.date,
       recipe: state.recipe.title,
     });
+  } else if (
+    checkIfThereIsADateWithSameId(state.recipe.id) &&
+    !state.recipe.date
+  ) {
+    console.log("hey");
+    state.dates = state.dates.filter(({ id }) => id !== state.recipe.id);
+    console.log(state.dates);
   } else {
     state.dates.push({
       id: state.recipe.id,
@@ -218,6 +226,9 @@ export const storeInDatesArr = () => {
       recipe: state.recipe.title,
     });
   }
+};
+
+export const saveDatesArr = () => {
   localStorage.setItem("datesArray", JSON.stringify(state.dates));
 };
 
@@ -236,4 +247,4 @@ const deleteLocalStorage = () => {
   localStorage.clear();
 };
 
-deleteLocalStorage();
+// deleteLocalStorage();
