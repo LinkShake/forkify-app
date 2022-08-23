@@ -91,9 +91,7 @@ If some problems occure during this phase, then check if your [`package.json`](/
     "parcel": "^2.6.2"
   },
   "dependencies": {
-    "core-js": "^3.23.5",
-    "fractional": "^1.0.0",
-    "regenerator-runtime": "^0.13.9"
+    "core-js": "^3.23.5"
   }
 }
 ```
