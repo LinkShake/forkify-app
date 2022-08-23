@@ -4,13 +4,13 @@ import icons from "url:../../img/icons.svg";
 class PaginationView extends View {
   _parentElement = document.querySelector(".pagination");
 
-  addHandlerClick(handlerFunction) {
+  onClick(cb) {
     this._parentElement.addEventListener("click", (e) => {
       const btn = e.target.closest(".btn--inline");
       if (!btn) return;
       const gotoPage = +btn.dataset.goto;
       this._data.currentPage = gotoPage;
-      handlerFunction();
+      cb();
     });
   }
 

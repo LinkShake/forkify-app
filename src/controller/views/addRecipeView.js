@@ -12,9 +12,9 @@ class AddRecipeView extends View {
 
   constructor() {
     super();
-    this._addHandlerOpenForm();
-    this._addHandlerCloseForm();
-    this._addHandlerIngredient();
+    this._onOpenForm();
+    this._onCloseForm();
+    this._onAddIngredient();
   }
 
   toggleWindow() {
@@ -24,19 +24,16 @@ class AddRecipeView extends View {
     document.querySelector(".recipe").classList.remove("overflow-hidden-class");
   }
 
-  _addHandlerOpenForm() {
+  _onOpenForm() {
     [this._btnOpenForm, this._btnOpenFormMobile.parentElement].forEach((el) =>
-      el.addEventListener(
-        "click",
-        function () {
-          this._mobileNav.classList.add("hidden");
-          this.toggleWindow();
-        }.bind(this)
-      )
+      el.addEventListener("click", () => {
+        this._mobileNav.classList.add("hidden");
+        this.toggleWindow();
+      })
     );
   }
 
-  _addHandlerCloseForm() {
+  _onCloseForm() {
     [this._btnCloseForm, this._overlay].forEach((el) =>
       el.addEventListener("click", this.toggleWindow.bind(this))
     );
@@ -52,16 +49,16 @@ class AddRecipeView extends View {
     });
   }
 
-  addHandlerUpload(handlerFunction) {
+  onUploadRecipe(cb) {
     this._parentElement.addEventListener("submit", (e) => {
       e.preventDefault();
       const dataArr = [...new FormData(this._parentElement)];
       const data = Object.fromEntries(dataArr);
-      handlerFunction(data);
+      cb(data);
     });
   }
 
-  _addHandlerIngredient() {
+  _onAddIngredient() {
     this._parentElement.addEventListener("click", (e) => {
       const btn = e.target.closest(".add-ingredient");
       const ingredientsColumn = document.getElementById("ingredients__column");

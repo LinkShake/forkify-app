@@ -15,15 +15,16 @@ class SearchView {
     this._parentElement.querySelector(".search__field").value = "";
   }
 
-  addHandlerSearch(handlerFunction) {
+  onSearch(cb) {
     this._parentElement.addEventListener("submit", (e) => {
       e.preventDefault();
       this._recipeView.classList.remove("full-width");
       this._results.classList.remove("hidden");
+      document.querySelector(".calendar-wrapper").classList.add("hidden");
       if (parseInt(window.innerWidth) <= WIDTH_TRANSITION_UI) {
         this._recipeView.classList.add("hidden");
       }
-      handlerFunction();
+      cb();
     });
   }
 }

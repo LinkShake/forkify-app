@@ -1,5 +1,4 @@
 import "core-js/stable";
-import "regenerator-runtime/runtime";
 import * as model from "./model/model.js";
 import recipeView from "./views/recipeView";
 import searchView from "./views/searchView";
@@ -94,27 +93,27 @@ const controlAddRecipe = async (newRecipeData) => {
     addRecipeView.renderError(err.message);
   }
 };
-const controlMarketIngredients = () => {
-  model.addMarketIngredients(
+const controlAddIngredientsToCart = (data) => {
+  model.addIngredientsToCart(
     model.state.recipe.ingredients,
     model.state.recipe.id
   );
-  model.storeMarketIngredients();
-  marketView.render(model.state.marketIngredients);
+  model.storeCartIngredients();
+  marketView.render(model.state.cartIngredients);
+  localStorage.setItem(`disabled-${data.recipe.id}`, true);
 };
-const controlMarket = () => {
-  paginationView._clearParentElement();
-  marketView.render(model.state.marketIngredients);
+const controlCart = () => {
+  marketView.render(model.state.cartIngredients);
 };
-const controlRemoveIngredientFromMarket = (description, id) => {
-  model.filterIngredient(description, id);
-  model.storeMarketIngredients();
-  marketView.render(model.state.marketIngredients);
+const controlRemoveIngredientFromCart = (description, id) => {
+  model.filterIngredientsInCart(description, id);
+  model.storeCartIngredients();
+  marketView.render(model.state.cartIngredients);
   recipeView.render(model.state.recipe);
 };
-const controlChangeQuantity = (quantity, description, id) => {
-  model.searchForIngredient(quantity, description, id);
-  model.storeMarketIngredients();
+const controlChangeIngredientQuantity = (quantity, description, id) => {
+  model.searchForIngredientInCart(quantity, description, id);
+  model.storeCartIngredients();
 };
 const controlSaveDate = (date) => {
   model.storeDate(date);
@@ -124,7 +123,7 @@ const controlSaveDate = (date) => {
 // const controlSaveInDatesArr = () => {
 // };
 const controlCalendar = () => {
-  calendarView.render(model.state.dates);
+  calendarView.render(model.state.recipesDates);
 };
 const controlBookmarksMobile = () => {
   model.state.search.results = model.state.bookmarks;
@@ -144,23 +143,20 @@ const updatePagination = (
   paginationView.render(model.state.search);
 };
 const init = () => {
-  recipeView.addHandlerRender(controlRecipes);
-  searchView.addHandlerSearch(controlSearchResults);
-  paginationView.addHandlerClick(controlPagination);
-  recipeView.addHandlerUpdateServings(controlServings);
-  recipeView.addHandlerBookmarks(controlAddBookmark);
-  bookmarksView.addHandlerRender(controlLoadBookmarks);
-  addRecipeView.addHandlerUpload(controlAddRecipe);
-  recipeView.addHandlerMarketIngredients(controlMarketIngredients, model.state);
-  marketView.addHandlerMarket(controlMarket);
-  marketView.addHandlerLoadMarket(model.loadMarketIngredients);
-  recipeView.addHandlerSaveDate(controlSaveDate);
-  // recipeView.addHandlerStoreInDatesArr(controlSaveInDatesArr);
-  marketView.addHandlerRemoveIngredientFromMarket(
-    controlRemoveIngredientFromMarket
-  );
-  marketView.addHandlerChangeQuantity(controlChangeQuantity);
-  calendarView.addHandlerDisplayCalendar(controlCalendar);
+  recipeView.onRender(controlRecipes);
+  searchView.onSearch(controlSearchResults);
+  paginationView.onClick(controlPagination);
+  recipeView.onUpdateServings(controlServings);
+  recipeView.onAddBookmarks(controlAddBookmark);
+  bookmarksView.onRender(controlLoadBookmarks);
+  addRecipeView.onUploadRecipe(controlAddRecipe);
+  recipeView.onAddIngredientsToCart(controlAddIngredientsToCart, model.state);
+  marketView.onClickOpenCart(controlCart);
+  marketView.addHandlerLoadMarket(model.loadIngredientsInCart);
+  recipeView.onSaveDate(controlSaveDate);
+  marketView.onRemoveIngredientFromMarket(controlRemoveIngredientFromCart);
+  marketView.onChangeQuantity(controlChangeIngredientQuantity);
+  calendarView.onClickDisplayCalendar(controlCalendar);
   resultsView.addHandlerClickMobileBookmarks(controlBookmarksMobile);
 };
 init();

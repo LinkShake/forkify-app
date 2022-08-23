@@ -1,16 +1,16 @@
 import icons from "url:../../../img/icons.svg";
 import { WIDTH_TRANSITION_UI } from "../../../shared/config";
 export default class View {
-  _parentElement = document.querySelector(".recipe");
+  _parentElement;
   _data;
   _errorMessage =
     "We are not aible to find that recipe. We're so sorry for the inconvenience. Try again, maybe check if the spelling of the recipe name is right!";
   _searchResultsEl = document.querySelector(".search-results");
 
   constructor() {
-    this.addHandlerResize();
+    this.onResize();
     this.handleWidth();
-    this.addHandlerLoad();
+    this.onLoad();
   }
 
   render(data, render = true, errorMsg = this._errorMessage) {
@@ -94,7 +94,7 @@ export default class View {
     this._parentElement.insertAdjacentHTML("afterbegin", successElement);
   }
 
-  addHandlerResize() {
+  onResize() {
     window.addEventListener("resize", () => {
       document.querySelector(".bookmarks").classList.add("hidden");
       if (
@@ -102,17 +102,17 @@ export default class View {
         document.querySelector(".results").children.length === 0
       ) {
         this._searchResultsEl.classList?.add("hidden");
-        this._parentElement.classList?.add("full-width");
+        document.querySelector(".recipe").classList?.add("full-width");
       }
 
       if (parseInt(window.innerWidth) > WIDTH_TRANSITION_UI) {
         this._searchResultsEl.classList?.remove("hidden");
-        this._parentElement.classList?.remove("full-width");
+        document.querySelector(".recipe").classList?.remove("full-width");
       }
     });
   }
 
-  addHandlerClickCloseButton(button, elementToHide, calendarButton = false) {
+  onClickCloseButton(button, elementToHide, calendarButton = false) {
     button.addEventListener("click", () => {
       const recipeEl = document.querySelector(".recipe");
       const searchResultsEl = document.querySelector(".search-results");
@@ -159,7 +159,7 @@ export default class View {
     }
   }
 
-  addHandlerLoad() {
+  onLoad() {
     window.addEventListener("load", () => {
       if (parseInt(window.innerWidth) <= WIDTH_TRANSITION_UI) {
         document.querySelector(".search-results").classList.add("hidden");

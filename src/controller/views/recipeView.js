@@ -1,5 +1,4 @@
 import icons from "url:../../img/icons.svg";
-// import { Fraction } from "fractional";
 import View from "./shared/View";
 
 class RecipeView extends View {
@@ -9,9 +8,9 @@ class RecipeView extends View {
     "We are not aible to find that recipe. We're so sorry for the inconvenience. Try again, maybe check if the spelling of the recipe name is right!";
 
   _generateMarkup() {
-    const isInMarket =
+    const isInCart =
       JSON.parse(localStorage.getItem(`disabled-${this._data.id}`)) &&
-      JSON.parse(localStorage.getItem("marketIngredients")).filter(
+      JSON.parse(localStorage.getItem("cartIngredients")).filter(
         (ingredient) => ingredient.id === this._data.id
       ).length !== 0;
 
@@ -71,8 +70,8 @@ class RecipeView extends View {
     </div>
     <div class="recipe__ingredients">
       <h2 class="heading--2">Recipe ingredients</h2>
-      <button class="btn--add-to-market" ${isInMarket ? "disabled" : ""}>
-      ${isInMarket ? "Ingredients in market" : "Add ingredients to market"}
+      <button class="btn--add-to-market" ${isInCart ? "disabled" : ""}>
+      ${isInCart ? "Ingredients in cart" : "Add ingredients to cart"}
       </button>
       <form class="date">
         <input type="date" id="date-calendar" value="${this._data.date}" >
@@ -112,11 +111,7 @@ class RecipeView extends View {
               <svg class="recipe__icon">
                 <use href="${icons}#icon-check"></use>
               </svg>
-              <div class="recipe__quantity">${
-                ingredient.quantity || ""
-                // ? new Fraction(ingredient.quantity)?.toString()
-                // : ""
-              }</div>
+              <div class="recipe__quantity">${ingredient.quantity || ""}</div>
               <div class="recipe__description">
                 <span class="recipe__unit">${ingredient.unit}</span>
                 ${ingredient.description}
@@ -124,13 +119,13 @@ class RecipeView extends View {
             </li>`;
   }
 
-  addHandlerRender(handlerFunction) {
+  onRender(cb) {
     ["hashchange", "load"].forEach((e) => {
-      window.addEventListener(e, handlerFunction);
+      window.addEventListener(e, cb);
     });
   }
 
-  addHandlerUpdateServings(handlerFunction) {
+  onUpdateServings(cb) {
     this._parentElement.addEventListener("click", (e) => {
       const btn = e.target.closest(".btn--update");
       if (!btn) return;
@@ -138,49 +133,37 @@ class RecipeView extends View {
       if (numberOfServings === 0) {
         return;
       }
-      handlerFunction(numberOfServings);
+      cb(numberOfServings);
     });
   }
 
-  addHandlerBookmarks(handlerFunction) {
+  onAddBookmarks(cb) {
     this._parentElement.addEventListener("click", (e) => {
       const btn = e.target.closest(".btn--bookmarks");
       if (!btn) return;
-      handlerFunction();
+      cb();
     });
   }
 
-  addHandlerMarketIngredients(handlerFunction, data) {
+  onAddIngredientsToCart(cb, data) {
     this._parentElement.addEventListener("click", (e) => {
       const btn = e.target.closest(".btn--add-to-market");
       if (!btn) return;
-      handlerFunction();
+      cb(data);
       btn.textContent = "Ingredients in market";
       btn.setAttribute("disabled", true);
       document.querySelector(".pagination").innerHTML = "";
-      localStorage.setItem(`disabled-${data.recipe.id}`, true);
     });
   }
 
-  addHandlerSaveDate(handlerFunction) {
-    this._parentElement.addEventListener(
-      "click",
-      function (e) {
-        const form = e.target.closest("form");
-        if (!form) return;
-        const date = form.querySelector("input");
-        handlerFunction(date.value);
-      }.bind(this)
-    );
+  onSaveDate(cb) {
+    this._parentElement.addEventListener("click", (e) => {
+      const form = e.target.closest("form");
+      if (!form) return;
+      const date = form.querySelector("input");
+      cb(date.value);
+    });
   }
-
-  // addHandlerStoreInDatesArr(handlerFunction) {
-  //   this._parentElement.addEventListener("click", (e) => {
-  //     const btn = e.target.closest(".btn--calendar");
-  //     if (!btn) return;
-  //     handlerFunction();
-  //   });
-  // }
 }
 
 export default new RecipeView();

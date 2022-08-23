@@ -7,25 +7,20 @@ class MenuView extends View {
 
   constructor() {
     super();
-    this.addHandlerClickMenuButton();
-    this.addHandlerClickMenuCloseButton();
+    this.onClickMenuButton();
+    this.onClickMenuCloseButton();
     this.hideMenuNav();
     this.hideOtherViewsOnClick();
   }
 
-  addHandlerClickMenuButton() {
-    this._menuButton.addEventListener(
-      "click",
-      function () {
-        this._parentElement.classList.remove("hidden");
-        document
-          .querySelector(".recipe")
-          .classList.add("overflow-hidden-class");
-      }.bind(this)
-    );
+  onClickMenuButton() {
+    this._menuButton.addEventListener("click", () => {
+      this._parentElement.classList.remove("hidden");
+      document.querySelector(".recipe").classList.add("overflow-hidden-class");
+    });
   }
 
-  addHandlerClickMenuCloseButton() {
+  onClickMenuCloseButton() {
     this._btnCloseMenu.addEventListener("click", () => {
       this._parentElement.classList.add("hidden");
       document

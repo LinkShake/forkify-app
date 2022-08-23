@@ -15,7 +15,7 @@ class ResultsView extends View {
 
   constructor() {
     super();
-    this.addHandlerClickCloseButton(this._buttonClose, this._searchResultsEl);
+    this.onClickCloseButton(this._buttonClose, this._searchResultsEl);
 
     this.addHandlerClickRecipePreview();
   }
@@ -34,7 +34,7 @@ class ResultsView extends View {
     });
   }
 
-  addHandlerClickMobileBookmarks(handlerFunction) {
+  addHandlerClickMobileBookmarks(cb) {
     this._bookmarksMobile.parentElement.addEventListener("click", () => {
       this._mobileNav.classList.add("hidden");
       this._recipeView.classList.remove("full-width");
@@ -43,7 +43,7 @@ class ResultsView extends View {
       if (parseInt(window.innerWidth) <= WIDTH_TRANSITION_UI) {
         this._recipeView.classList.add("hidden");
       }
-      handlerFunction();
+      cb();
     });
   }
 }

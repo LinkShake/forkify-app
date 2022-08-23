@@ -2,6 +2,7 @@ import {
   API_URL,
   RECIPES_RESULTS_PER_PAGE,
   API_KEY,
+  DANGEROUS_SYMBOLS_AND_WORDS,
 } from "../../shared/config.js";
 import { AJAX } from "./helpers.js";
 
@@ -14,10 +15,9 @@ export const state = {
     currentPage: 1,
   },
   bookmarks: [],
-  marketIngredients: [],
-  recipesInMarket: [],
-  dates: [],
-  notificationsCounter: 0,
+  cartIngredients: [],
+  recipesInCart: [],
+  recipesDates: [],
 };
 
 const createRecipeObj = (data) => {
@@ -136,6 +136,20 @@ export const uploadRecipe = async (data) => {
     if (!ingredients.length) {
       throw new Error("You haven't put any ingredients!");
     }
+    DANGEROUS_SYMBOLS_AND_WORDS.forEach((illegal) => {
+      if (
+        data.title.includes(illegal) ||
+        data.image.includes(illegal) ||
+        data.publisher.includes(illegal) ||
+        ingredients.some(
+          ({ _, unit, description }) =>
+            unit.includes(illegal) || description.includes(illegal)
+        )
+      )
+        throw new Error(
+          "Potentially dangerous symbol or word included in your recipe"
+        );
+    });
     const recipe = {
       title: data.title,
       source_url: data.sourceUrl,
@@ -153,41 +167,41 @@ export const uploadRecipe = async (data) => {
   }
 };
 
-export const addMarketIngredients = (ingredients, recipeId) => {
+export const addIngredientsToCart = (ingredients, recipeId) => {
   try {
     const data = [...ingredients];
     data.forEach((currentData) => {
       currentData.id = recipeId;
     });
-    state.marketIngredients.push(...data);
+    state.cartIngredients.push(...data);
   } catch (err) {
     throw err;
   }
 };
 
-export const storeMarketIngredients = () => {
+export const storeCartIngredients = () => {
   localStorage.setItem(
-    "marketIngredients",
-    JSON.stringify(state.marketIngredients)
+    "cartIngredients",
+    JSON.stringify(state.cartIngredients)
   );
 };
 
-export const loadMarketIngredients = () => {
-  const storage = localStorage.getItem("marketIngredients");
+export const loadIngredientsInCart = () => {
+  const storage = localStorage.getItem("cartIngredients");
   if (storage) {
-    state.marketIngredients = JSON.parse(storage);
+    state.cartIngredients = JSON.parse(storage);
   }
 };
 
-export const filterIngredient = (description, id) => {
-  state.marketIngredients = state.marketIngredients.filter(
+export const filterIngredientsInCart = (description, id) => {
+  state.cartIngredients = state.cartIngredients.filter(
     (ingredient) =>
       !(ingredient.description === description && ingredient.id === id)
   );
 };
 
-export const searchForIngredient = (quantity, description, id) => {
-  state.marketIngredients.forEach((ingredient) => {
+export const searchForIngredientInCart = (quantity, description, id) => {
+  state.cartIngredients.forEach((ingredient) => {
     if (ingredient.id === id && ingredient.description === description) {
       ingredient.quantity = quantity;
     }
@@ -195,7 +209,7 @@ export const searchForIngredient = (quantity, description, id) => {
 };
 
 const checkIfThereIsADateWithSameId = (dateID) => {
-  return state.dates.some(({ id }) => id === dateID);
+  return state.recipesDates.some(({ id }) => id === dateID);
 };
 
 export const storeDate = (date) => {
@@ -206,8 +220,10 @@ export const storeDate = (date) => {
 
 export const storeInDatesArr = () => {
   if (checkIfThereIsADateWithSameId(state.recipe.id)) {
-    state.dates = state.dates.filter(({ id }) => id !== state.recipe.id);
-    state.dates.push({
+    state.recipesDates = state.recipesDates.filter(
+      ({ id }) => id !== state.recipe.id
+    );
+    state.recipesDates.push({
       id: state.recipe.id,
       date: state.recipe.date,
       recipe: state.recipe.title,
@@ -216,11 +232,11 @@ export const storeInDatesArr = () => {
     checkIfThereIsADateWithSameId(state.recipe.id) &&
     !state.recipe.date
   ) {
-    console.log("hey");
-    state.dates = state.dates.filter(({ id }) => id !== state.recipe.id);
-    console.log(state.dates);
+    state.recipesDates = state.recipesDates.filter(
+      ({ id }) => id !== state.recipe.id
+    );
   } else {
-    state.dates.push({
+    state.recipesDates.push({
       id: state.recipe.id,
       date: state.recipe.date,
       recipe: state.recipe.title,
@@ -229,7 +245,7 @@ export const storeInDatesArr = () => {
 };
 
 export const saveDatesArr = () => {
-  localStorage.setItem("datesArray", JSON.stringify(state.dates));
+  localStorage.setItem("datesArray", JSON.stringify(state.recipesDates));
 };
 
 export const loadDate = () => {
@@ -239,7 +255,7 @@ export const loadDate = () => {
     state.recipe.date = JSON.parse(storage);
   }
   if (storageArr) {
-    state.dates = JSON.parse(storageArr);
+    state.recipesDates = JSON.parse(storageArr);
   }
 };
 

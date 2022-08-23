@@ -11,26 +11,24 @@ class MarketView extends View {
 
   constructor() {
     super();
-    this.addHandlerClickCloseButton(this._buttonClose, this._searchResultsEl);
+    this.onClickCloseButton(this._buttonClose, this._searchResultsEl);
   }
 
-  addHandlerMarket(handlerFunction) {
+  onClickOpenCart(cb) {
     [
       document.querySelector(".nav__btn--market"),
       document.querySelector(".nav__btn--market-mobile").parentElement,
     ].forEach((el) =>
-      el.addEventListener(
-        "click",
-        function () {
-          this._recipeView.classList.remove("full-width");
-          this._searchResultsEl.classList.remove("hidden");
-          document.querySelector(".mobile-nav").classList.add("hidden");
-          if (parseInt(window.innerWidth) <= WIDTH_TRANSITION_UI) {
-            this._recipeView.classList.add("hidden");
-          }
-          handlerFunction();
-        }.bind(this)
-      )
+      el.addEventListener("click", () => {
+        this._recipeView.classList.remove("full-width");
+        this._searchResultsEl.classList.remove("hidden");
+        document.querySelector(".mobile-nav").classList.add("hidden");
+        if (parseInt(window.innerWidth) <= WIDTH_TRANSITION_UI) {
+          this._recipeView.classList.add("hidden");
+        }
+        document.querySelector(".pagination").innerHTML = "";
+        cb();
+      })
     );
   }
 
@@ -53,28 +51,28 @@ class MarketView extends View {
       .join("")}</ul>`;
   }
 
-  addHandlerLoadMarket(handlerFunction) {
-    window.addEventListener("load", handlerFunction());
+  addHandlerLoadMarket(cb) {
+    window.addEventListener("load", cb());
   }
 
-  addHandlerRemoveIngredientFromMarket(handlerFunction) {
+  onRemoveIngredientFromMarket(cb) {
     this._parentElement.addEventListener("click", (e) => {
       const btn = e.target.closest(".btn--remove-ingredient");
       if (!btn) return;
       const description = btn.dataset.description;
       const id = btn.id;
-      handlerFunction(description, id);
+      cb(description, id);
     });
   }
 
-  addHandlerChangeQuantity(handlerFunction) {
+  onChangeQuantity(cb) {
     this._parentElement.addEventListener("click", (e) => {
       const inputQuantity = e.target.closest(".input-quantity");
       if (!inputQuantity) return;
       const quantity = +inputQuantity.value;
       const description = inputQuantity.dataset.description;
       const id = inputQuantity.id.slice(1);
-      handlerFunction(quantity, description, id);
+      cb(quantity, description, id);
     });
   }
 }

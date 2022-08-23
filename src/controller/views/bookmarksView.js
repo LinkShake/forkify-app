@@ -11,7 +11,7 @@ class BookmarksView extends View {
 
   constructor() {
     super();
-    this.addHandlerClick();
+    this.onClick();
   }
 
   _generateMarkup() {
@@ -20,11 +20,11 @@ class BookmarksView extends View {
       .join("");
   }
 
-  addHandlerRender(handlerFunction) {
-    window.addEventListener("load", handlerFunction);
+  onRender(cb) {
+    window.addEventListener("load", cb);
   }
 
-  addHandlerClick() {
+  onClick() {
     this._bookmarksButton.addEventListener("click", () => {
       document.querySelector(".bookmarks").classList.remove("hidden");
     });
