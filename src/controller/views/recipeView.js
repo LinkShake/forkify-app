@@ -72,7 +72,7 @@ class RecipeView extends View {
     <div class="recipe__ingredients">
       <h2 class="heading--2">Recipe ingredients</h2>
       <button class="btn--add-to-market" ${isInMarket ? "disabled" : ""}>
-      ${isInMarket ? "Ingredients in market" : "Market ingredients"}
+      ${isInMarket ? "Ingredients in market" : "Add ingredients to market"}
       </button>
       <form class="date">
         <input type="date" id="date-calendar" value="${this._data.date}" >
