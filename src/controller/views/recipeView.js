@@ -76,7 +76,7 @@ class RecipeView extends View {
       </button>
       <form class="date">
         <input type="date" id="date-calendar" value="${this._data.date}" >
-        <button class="btn--calendar">Set date</button>
+        <button class="btn--calendar">Set a date for that recipe</button>
       </form>
           <ul class="recipe__ingredient-list">
           ${this._data.ingredients
